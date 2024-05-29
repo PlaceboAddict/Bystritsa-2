@@ -1,0 +1,372 @@
+body {
+	padding: 0;
+	margin: 0;
+	transform: scale(1.1);
+	transform-origin: 0 0;
+}
+
+#background {
+	width: 779px;
+	height: 991px;
+	background-image: url("src/background.png");
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	z-index: -9999;
+}
+
+.slider {
+  width: 260px;
+  position: relative;
+  left: 310px;
+  top: 503px;
+  z-index: 1;
+}
+
+.slider-input {
+  width: 100%;
+  -webkit-appearance: none;
+  background: transparent;
+  outline: none;
+
+}
+
+.slider-input::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 20px;
+  height: 20px;
+  background: transparent;
+  cursor: pointer;
+}
+
+.slider-thumb {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  margin-left: -39px;
+  transform: translateY(-50%);
+  width: 78px;
+  height: 40px;
+  pointer-events: none;
+}
+
+.slider-thumb img {
+  width: 100%;
+  height: 100%;
+}
+
+.slider2 {
+  width: 260px;
+  position: relative;
+  left: 344px;
+  top: 480px;
+  z-index: 1;
+}
+
+.slider-input2 {
+  width: 100%;
+  -webkit-appearance: none;
+  background: transparent;
+  outline: none;
+
+}
+
+.slider-input2::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 20px;
+  height: 20px;
+  background: transparent;
+  cursor: pointer;
+}
+
+.slider-thumb2 {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  margin-left: -15px;
+  transform: translateY(-50%);
+  width: 30px;
+  height: 47px;
+  pointer-events: none;
+}
+
+.slider-thumb img {
+  width: 100%;
+  height: 100%;
+}
+
+
+
+
+
+
+
+
+.buttons {
+	position: relative;
+	width: 136px;
+	height: 73px;
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+	cursor: pointer;
+}
+
+#buttonG {
+	left: 183px;
+	top: 140px;
+	background: url('src/actButtons/clear.png');
+}
+
+#buttonG:active {
+	background: url('src/actButtons/dark/clear.png');
+}
+
+#buttonX {
+	left: 184px;
+	top: 139px;
+	background: url('src/actButtons/multiplication.png');
+}
+
+#buttonD {
+	left: 184px;
+	top: 132px;
+	background: url('src/actButtons/division.png');
+}
+
+#buttonD:active {
+	background: url('src/actButtons/dark/division.png');
+}
+
+#buttonM {
+	left: 184px;
+	top: 127px;
+	background: url('src/actButtons/minus.png');
+}
+
+#buttonM:active {
+	background: url('src/actButtons/dark/minus.png');
+}
+
+
+
+
+
+
+
+
+
+
+
+
+.num_buttons {
+	position: relative;
+	width: 85px;
+	height: 68px;
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+	cursor: pointer;
+}
+
+#btn0 {
+	left: 359px;
+	top: 54px;
+  width: 168px;
+	height: 68px;
+	background: url('src/numButtons/0.png');
+}
+
+#btn0:active {
+	background: url('src/numButtons/dark/0.png');
+}
+
+#btn1 {
+	left: 359px;
+	top: -82px;
+	background: url('src/numButtons/1.png');
+}
+
+#btn1:active {
+	background: url('src/numButtons/dark/1.png');
+}
+
+#btn2 {
+	left: 443px;
+	top: -150px;
+	background: url('src/numButtons/2.png');
+}
+
+#btn2:active {
+	background: url('src/numButtons/dark/2.png');
+}
+
+#btn3 {
+	left: 527px;
+	top: -218px;
+	background: url('src/numButtons/3.png');
+}
+
+#btn3:active {
+	background: url('src/numButtons/dark/3.png');
+}
+
+
+
+#btn4 {
+	left: 359px;
+	top: -352px;
+	background: url('src/numButtons/4.png');
+}
+
+#btn4:active {
+	background: url('src/numButtons/dark/4.png');
+}
+
+#btn5 {
+	left: 443px;
+	top: -422px;
+	background: url('src/numButtons/5.png');
+}
+
+#btn5:active {
+	background: url('src/numButtons/dark/5.png');
+}
+
+#btn6 {
+	left: 527px;
+	top: -490px;
+	background: url('src/numButtons/6.png');
+}
+
+#btn6:active {
+	background: url('src/numButtons/dark/6.png');
+}
+
+
+
+#btn7 {
+	left: 359px;
+	top: -626px;
+	background: url('src/numButtons/7.png');
+}
+
+#btn7:active {
+	background: url('src/numButtons/dark/7.png');
+}
+
+#btn8 {
+	left: 443px;
+	top: -693px;
+	background: url('src/numButtons/8.png');
+}
+
+#btn8:active {
+	background: url('src/numButtons/dark/8.png');
+}
+
+#btn9 {
+	left: 527px;
+	top: -761px;
+	background: url('src/numButtons/9.png');
+}
+
+#btn9:active {
+	background: url('src/numButtons/dark/9.png');
+}
+
+
+
+
+
+#btn_teleport {
+	left: 525px;
+	top: -625px;
+	background: url('src/actButtons/teleport.png');
+}
+
+#btn_teleport:active {
+	background: url('src/actButtons/dark/teleport.png');
+}
+
+#btn_toLeft {
+	left: 444px;
+	top: -476px;
+	background: url('src/actButtons/toLeft.png');
+}
+
+#btn_toLeft:active {
+	background: url('src/actButtons/dark/toLeft.png');
+}
+
+#btn_toRight {
+	left: 251px;
+	top: -547px;
+	background: url('src/actButtons/toRight.png');
+}
+
+#btn_toRight:active {
+	background: url('src/actButtons/dark/toRight.png');
+}
+
+#btn_on {
+	left: 573px;
+	top: -528px;
+  width: 157px;
+	height: 105px;
+	background: url('src/actButtons/on.png');
+}
+
+#btn_on:active {
+	background: url('src/actButtons/dark/on.png');
+}
+
+
+
+.display {
+  font-size: 26px;
+  text-align: center;
+  padding-top: 20px;
+  color: black;
+  position: absolute;
+  left:174px;
+  top: 882px;
+  width: 345px;
+  height: 70px;
+  display: flex;
+  flex-wrap: wrap;
+  border-radius: 30px;
+  padding: 7px 20px;
+  letter-spacing: 27px;
+  transform: rotate(-1deg);
+}
+
+.count_display {
+  left: 613px;
+  width: 68px;
+  color: #b90f0f;
+  font-size: 25px;
+  text-align: center;
+  padding-top: 20px;
+  position: absolute;
+  top: 878px;
+  height: 70px;
+  display: flex;
+  flex-wrap: wrap;
+  border-radius: 30px;
+  padding: 7px 20px;
+}
+
+
+
+.numberOut {
+	width: 16px;
+	height: 25px;
+	position: relative;
+	background: url('src/lowerPanelNums/0.png');
+}
+
+#n0 {
+	top: 689px;
+	left: 582px;
+}
