@@ -2,7 +2,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const sliderInput = document.querySelector('.slider-input');
   const sliderThumb = document.querySelector('.slider-thumb');
   const value = sliderInput.value;
-  const thumbPosition = (value / sliderInput.max) * 100;
+  // const thumbPosition = (value / sliderInput.max) * 100;
+  let thumbPosition = (value / sliderInput.max) * 100;
   sliderThumb.style.left = `${thumbPosition}%`;
   sliderInput.addEventListener('input', () => {
     const value = sliderInput.value;
@@ -15,6 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const value2 = sliderInput2.value;
   let thumbPosition2 = (value2 / sliderInput2.max) * 100;
   sliderThumb2.style.left = `${thumbPosition2}%`;
+  
 
 
   let display = document.querySelector(".display");
@@ -24,30 +26,34 @@ document.addEventListener('DOMContentLoaded', () => {
   let mult = false;
   let counter = "0";
   let power = "0";
-  let div = false;
   let teleport = false;
-  let back_mult = 0
+  let back_mult = 0;
+  let div = false;
+  let div_teleport = false;
+  let div_a = 0;
+  let div_b = 0;
+  let div_result = "0";
 
   $("#buttonG").click(function(){
     display.innerText = "00000000000";
     memory = "0";
     mult = false;
     counter = "0";
+    count_display.innerText = counter
     power = "0";
     back_mult = 0
-    if(mult === false){
-      $("#buttonX").css('background','url("src/actButtons/multiplication.png")');
-    }
-    else{
-      $("#buttonX").css('background','url("src/actButtons/dark/multiplication.png")');
-    }
+    $("#buttonX").css('background','url("src/actButtons/multiplication.png")');
+    $("#buttonD").css('background','url("src/actButtons/division.png")');
     sliderThumb2.style.left = `${50}%`;
+    sliderThumb.style.left = `${100}%`;
     thumbPosition2 = 50;
-    teleport = false
+    teleport = false;
+    div = false;
+    div_teleport = false;
   });
 
   $("#btn_on").click(function(){
-    if (mult === false) {
+    if (mult === false && div_teleport === false) {
       try {
         display.innerText = eval("1" + display.innerText + "+" + memory);
         display.innerText = display.innerText.substr(-11)
@@ -57,6 +63,14 @@ document.addEventListener('DOMContentLoaded', () => {
       } catch (e) {
         display.innerText = "Error!";
       }
+    }
+    else if (div_teleport === true) {
+      sliderThumb2.style.left = `${50}%`;
+      thumbPosition2 = 50;
+      display.innerText = memory + "00000000000"
+      display.innerText = display.innerText.substr(0, 11);
+      div_a = memory;
+      memory = "0"
     }
     else {
       counter = eval("(" + counter + " + 1) % 10")
@@ -69,7 +83,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   $("#buttonM").click(function(){
-    if (mult === false) {
+    if (mult === false && div === false) {
       try {
         display.innerText = eval("1" + display.innerText + "-" + memory);
         display.innerText = display.innerText.substr(-11)
@@ -77,16 +91,39 @@ document.addEventListener('DOMContentLoaded', () => {
       } catch (e) {
         display.innerText = "Error!";
       }
+      sliderThumb2.style.left = `${50}%`;
+      thumbPosition2 = 50;
     }
+    else if (div === true) {
+      div_b = memory;
+      try {
+        div_result = div_a / div_b;
+      } catch (e) {
+        display.innerText = "Error!";
+      }
+      div_result = Number(div_result.toString().slice(0, 11));
+      while (div_result % 1 !== 0) {
+        div_result *= 10
+      }
+      ten_pow = 10 ** (div_result.toString().length - 1);
+      counter = parseInt(div_result.toString()[0])
+      count_display.innerText = counter
+      div_result = div_result % ten_pow
+      // console.log(div_a)
+      // console.log(div_b)
+      // console.log(div_result)
+    }
+    // для уменьшения счетчика умножения
     else {
       counter = eval("(" + counter + " - 1) % 10")
       if (counter < 0) {
         counter = -counter
       }
       count_display.innerText = counter
+      sliderThumb2.style.left = `${50}%`;
+      thumbPosition2 = 50;
     }
-    sliderThumb2.style.left = `${50}%`;
-    thumbPosition2 = 50;
+    
   });
 
 
@@ -110,6 +147,7 @@ document.addEventListener('DOMContentLoaded', () => {
     else{
       $(this).css('background','url("src/actButtons/dark/division.png")');
     }
+    memory = 0
   });
 
   $("#btn_toLeft").click(function(){
@@ -134,7 +172,6 @@ document.addEventListener('DOMContentLoaded', () => {
         while (res.length < 11) {
           res = "0" + res
         }
-        console.log(res)
         display.innerText = res
         display.innerText = display.innerText.substr(0, 11)
         back_mult += 1
@@ -145,7 +182,6 @@ document.addEventListener('DOMContentLoaded', () => {
         while (res.length < 11) {
           res = "0" + res
         }
-        console.log(res)
         display.innerText = res
         display.innerText = display.innerText.substr(0, 11)
         back_mult += 1
@@ -155,13 +191,37 @@ document.addEventListener('DOMContentLoaded', () => {
       sliderThumb2.style.left = `${0}%`;
       thumbPosition2 = 0
     }
+    else if (div) {
+      ten_pow = 10 ** (div_result.toString().length - 1);
+      console.log("Before: " + div_result)
+      counter = div_result.toString()[0]
+      count_display.innerText = counter
+      // div_result = div_result % ten_pow
+      if (div_result.toString().length > 1) {
+        div_result = div_result.toString().slice(1)
+      }
+      else {
+        div_result = 0
+      }
+      console.log("After: " + div_result)
+
+      if (thumbPosition2 < 50) {
+        thumbPosition2 = thumbPosition2 + 5;
+        sliderThumb2.style.left = `${thumbPosition2}%`;
+      }
+    }
   });
 
   $("#btn_teleport").click(function(){
-    if (mult || div) {
+    if (mult) {
       thumbPosition2 = 0;
       sliderThumb2.style.left = `${0}%`;
       teleport = true
+    }
+    else {
+      thumbPosition2 = 0;
+      sliderThumb2.style.left = `${0}%`;
+      div_teleport = true
     }
   });
 
