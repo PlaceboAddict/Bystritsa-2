@@ -8,7 +8,12 @@ document.addEventListener('DOMContentLoaded', () => {
   sliderInput.addEventListener('input', () => {
     const value = sliderInput.value;
     const thumbPosition = (value / sliderInput.max) * 100;
-    sliderThumb.style.left = `${thumbPosition}%`;
+    if (thumbPosition > thumbPosition2) {
+      sliderThumb.style.left = `${thumbPosition}%`;
+    }
+    else {
+      sliderThumb.style.left = `${thumbPosition2 + 30}%`;
+    }
   });
 
   const sliderInput2 = document.querySelector('.slider-input2');
@@ -17,7 +22,11 @@ document.addEventListener('DOMContentLoaded', () => {
   let thumbPosition2 = (value2 / sliderInput2.max) * 100;
   sliderThumb2.style.left = `${thumbPosition2}%`;
   
-
+  const openTabButton = document.getElementById('open-tab-button');
+  openTabButton.addEventListener('click', () => {
+    const url = 'https://djvu.online/file/KDdbVYSrpfID9'; // URL сайта, который нужно открыть
+    window.open(url, '_blank');
+  });
 
   let display = document.querySelector(".display");
   let count_display = document.querySelector(".count_display");
@@ -41,7 +50,7 @@ document.addEventListener('DOMContentLoaded', () => {
     counter = "0";
     count_display.innerText = counter
     power = "0";
-    back_mult = 0
+    back_mult = 0;
     $("#buttonX").css('background','url("src/actButtons/multiplication.png")');
     $("#buttonD").css('background','url("src/actButtons/division.png")');
     sliderThumb2.style.left = `${50}%`;
@@ -193,7 +202,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     else if (div) {
       ten_pow = 10 ** (div_result.toString().length - 1);
-      console.log("Before: " + div_result)
       counter = div_result.toString()[0]
       count_display.innerText = counter
       // div_result = div_result % ten_pow
@@ -203,7 +211,6 @@ document.addEventListener('DOMContentLoaded', () => {
       else {
         div_result = 0
       }
-      console.log("After: " + div_result)
 
       if (thumbPosition2 < 50) {
         thumbPosition2 = thumbPosition2 + 5;
